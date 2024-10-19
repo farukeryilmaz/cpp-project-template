@@ -1,0 +1,74 @@
+# Ignore build directories and intermediate files
+/bin/*
+/bin-int/*
+
+# Ignore Premake-generated project files
+**/*.make
+**/*.workspace
+**/*.sln
+**/*.vcxproj
+**/*.vcxproj.filters
+**/*.vcxproj.user
+Makefile
+CMakeLists.txt.user
+obj/
+
+# Ignore macOS Xcode project files
+*.xcodeproj
+*.xcworkspace
+*.xcuserdata
+
+# Ignore Linux-specific generated files
+*.o
+*.a
+*.so
+*.out
+
+# Ignore Windows-specific generated files
+*.obj
+*.pdb
+*.exp
+*.idb
+*.ipch
+*.iobj
+*.ipdb
+
+# Ignore Visual Studio Code files
+.vscode/
+
+# Ignore Visual Studio files
+.vs/
+
+# Ignore Premake-generated metadata and cache
+project_makefile
+Makefile
+Makefile.config
+build.ninja
+*.ninja
+
+# Ignore OS-specific metadata
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Ignore IDE-specific files
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Ignore Git merge conflict files
+*.orig
+*.rej
+
+# Ignore temporary files
+*.tmp
+*.swp
+*.bak
+
+# Ignore personal editor settings
+*.user
+*.suo
+*.ncb
+*.opendb
+*.sdf
+*.sln.docstates
