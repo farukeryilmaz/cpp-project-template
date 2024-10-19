@@ -1,0 +1,34 @@
+name: CI macOS
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        configuration: [Debug, Release]
+    steps:
+      - name: Checkout repository with submodules
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Set executable permission for Premake
+        run: chmod +x vendor/premake/bin/premake5_macos
+
+      - name: Set configuration as lowercase
+        run: echo "CONFIGURATION=${{ matrix.configuration == 'Debug' && 'debug' || 'release' }}" >> $GITHUB_ENV
+
+      - name: Build with Premake
+        run: |
+          vendor/premake/bin/premake5_macos gmake2
+          cd MyProject
+          make config=$CONFIGURATION -j$(sysctl -n hw.ncpu)  # Use $CONFIGURATION (lowercase)
+
+      - name: Run tests
+        run: ./bin/${{ matrix.configuration }}-macosx-x86_64/MyProjectTests

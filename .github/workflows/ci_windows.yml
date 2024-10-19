@@ -1,0 +1,29 @@
+name: CI Windows
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        configuration: [Debug, Release]
+    steps:
+      - name: Checkout repository with submodules
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Build with Premake and MSVC
+        shell: cmd
+        run: |
+          vendor\\premake\\bin\\premake5.exe vs2022
+          "C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Auxiliary\\Build\\vcvars64.bat" ^
+          && "C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\MSBuild\\Current\\Bin\\MSBuild.exe" MyProject/MyProject.sln /p:Configuration=${{ matrix.configuration }}
+
+      - name: Run tests
+        run: ./bin\\${{ matrix.configuration }}-windows-x86_64\\MyProjectTests.exe
