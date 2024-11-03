@@ -84,9 +84,9 @@ This project comes with preconfigured GitHub Actions workflows that automaticall
 - **macOS** using Xcode
 
 ## Upcoming Features
-- `GitLab CI/CD` and `Jenkins` integration are planned and will be added.
-- `Cppcheck` static code analysis will be added to the CI process.
-- `SonarCloud` static code analysis will be integrated.
+- [ ] `GitLab CI/CD` and `Jenkins` integration are planned and will be added.
+- [x] `Cppcheck` static code analysis will be added to the CI process.
+- [ ] `SonarCloud` static code analysis will be integrated.
 
 ## Contributing
 Contributions are welcome! If you find a bug or have a suggestion for improvement, feel free to open an issue or submit a pull request.
