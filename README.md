@@ -63,7 +63,7 @@ Premake5 is used to generate project files for various platforms and toolchains.
    - For Visual Studio, open the generated `.sln` file and build from the IDE.
    - For GNU Make:
      ```bash
-     make config=release
+     make -C MyProject config=release
      ```
    - For Xcode, open the generated project and build from Xcode.
 
